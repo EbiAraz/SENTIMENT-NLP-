@@ -65,8 +65,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Run Bandit security check
-      uses: gaurav-nelson/github-action-bandit@v1
-      with:
-        path: "."
-      continue-on-error: true
+- name: Install Bandit
+  run: pip install bandit
+
+- name: Run Bandit security check
+  run: bandit -r .
+  continue-on-error: true
