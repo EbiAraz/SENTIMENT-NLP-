@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-Open app: https://paperback-scope-paradise-advertisements.trycloudflare.com
+Open app: https://sentiment-nlp-live-20260617.streamlit.app/
 
 A deep learning project that fine-tunes DistilBERT for binary sentiment classification. Includes training, evaluation, inference, and a Streamlit web UI.
 
