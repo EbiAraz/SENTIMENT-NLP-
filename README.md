@@ -1,5 +1,11 @@
 # Sentiment Analysis Project (DistilBERT)
 
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-OPEN%20APP-22c55e?style=for-the-badge)](https://paperback-scope-paradise-advertisements.trycloudflare.com)
+
+## Live Demo
+
+Open app: https://paperback-scope-paradise-advertisements.trycloudflare.com
+
 A deep learning project that fine-tunes DistilBERT for binary sentiment classification. Includes training, evaluation, inference, and a Streamlit web UI.
 
 ## Streamlit Run Link
