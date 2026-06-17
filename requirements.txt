@@ -4,5 +4,6 @@ transformers
 datasets
 scikit-learn
 torch
+torchvision
 numpy
 evaluate

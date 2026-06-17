@@ -2,6 +2,7 @@ transformers
 datasets
 scikit_learn
 torch
+torchvision
 numpy
 evaluate
 pandas
