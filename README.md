@@ -4,9 +4,19 @@
 
 Public Streamlit URL status: temporarily unavailable (403 on Streamlit Cloud).
 
-Temporary test method:
+Temporary public test link (no account required):
 
-- Run locally: `streamlit run app.py`
+- https://dc9c8032428238.lhr.life
+
+Important limitations for this temporary link:
+
+- It works only while your local app is running (`streamlit run app.py`).
+- It works only while the SSH tunnel session stays open.
+- The URL can expire and change at any time.
+
+If the temporary link stops working, restart the tunnel:
+
+ssh -o StrictHostKeyChecking=no -R 80:localhost:8501 nokey@localhost.run
 
 This project fine-tunes a DistilBERT model for binary sentiment classification and provides training, evaluation, and inference scripts.
 
