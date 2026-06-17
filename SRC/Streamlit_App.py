@@ -138,10 +138,10 @@ def render_prediction_result(prediction):
 
 def main():
     st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
-    if "sentiment_text" not in st.session_state:
-        st.session_state.sentiment_text = ""
     if "last_prediction" not in st.session_state:
         st.session_state.last_prediction = None
+    if "clear_sentiment_input" not in st.session_state:
+        st.session_state.clear_sentiment_input = False
 
     with st.sidebar:
         st.markdown("## Sentiment Feedback Studio")
@@ -176,23 +176,26 @@ def main():
         st.markdown("<div class='panel'>", unsafe_allow_html=True)
         st.markdown("### Try it now")
         st.caption("Type any sentence or short review here, then click Analyze sentiment.")
+        if st.session_state.clear_sentiment_input:
+            st.session_state.sentiment_input = ""
+            st.session_state.clear_sentiment_input = False
         st.text_area(
             "Type your sentence here",
             height=180,
             placeholder="Enter a sentence, review, or short paragraph...",
             label_visibility="visible",
-            key="sentiment_text",
+            key="sentiment_input",
         )
         submitted = st.button("Analyze sentiment")
         st.markdown("</div>", unsafe_allow_html=True)
 
         if submitted:
             try:
-                current_text = st.session_state.sentiment_text.strip()
+                current_text = st.session_state.sentiment_input.strip()
                 if not current_text:
                     raise ValueError("Text cannot be empty.")
                 st.session_state.last_prediction = render_prediction(current_text)
-                st.session_state.sentiment_text = ""
+                st.session_state.clear_sentiment_input = True
                 st.rerun()
             except Exception as exc:
                 st.error(str(exc))
