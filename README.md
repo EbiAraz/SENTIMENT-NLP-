@@ -16,13 +16,13 @@ The GitHub repository homepage should also include the public Streamlit link aft
 
 Suggested README badge for the top of the repository after deployment:
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR-STREAMLIT-APP-URL)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://4qt3vq9xnjvvemjrcxys6c.streamlit.app/)
 
-Replace `YOUR-STREAMLIT-APP-URL` with the public Streamlit Community Cloud URL.
+This badge opens the public Streamlit Community Cloud URL.
 
 Suggested GitHub section after deployment:
 
-- Live UI: YOUR-STREAMLIT-APP-URL
+- Live UI: https://4qt3vq9xnjvvemjrcxys6c.streamlit.app/
 - App entry point: `app.py`
 - Local launch: `streamlit run app.py`
 
