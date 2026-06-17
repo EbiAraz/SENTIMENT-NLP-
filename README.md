@@ -6,7 +6,7 @@ Public Streamlit URL status: temporarily unavailable (403 on Streamlit Cloud).
 
 Temporary public test link (no account required):
 
-- https://49999d5ed75a39.lhr.life
+- https://26c0a52af402e7.lhr.life
 
 Important limitations for this temporary link:
 
