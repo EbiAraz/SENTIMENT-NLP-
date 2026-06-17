@@ -1,132 +1,294 @@
 # Sentiment Analysis Project (DistilBERT)
 
-## Streamlit Run Link
+A deep learning project that fine-tunes DistilBERT for binary sentiment classification. Includes training, evaluation, inference, and a Streamlit web UI.
 
-Public Streamlit URL status: temporarily unavailable (403 on Streamlit Cloud).
+## Quick Start - Run Locally
 
-Temporary public test link (no account required):
+### Prerequisites
+- Python 3.10 or higher
+- pip or conda package manager
+- ~2GB free disk space (for models)
 
-- https://a5ca11fb0b84ca.lhr.life
+### Installation & Running
 
-Important limitations for this temporary link:
+```bash
+# Clone the repository
+git clone https://github.com/EbiAraz/SENTIMENT-NLP-.git
+cd SENTIMENT-NLP-
 
-- It works only while your local app is running (`streamlit run app.py`).
-- It works only while the SSH tunnel session stays open.
-- The URL can expire and change at any time.
+# Install dependencies
+pip install -r requirements.txt
 
-If the temporary link stops working, restart the tunnel:
-
-ssh -o StrictHostKeyChecking=no -R 80:localhost:8501 nokey@localhost.run
-
-This project fine-tunes a DistilBERT model for binary sentiment classification and provides training, evaluation, and inference scripts.
-
-It also includes a Streamlit interface for a more polished, app-like experience when testing the model with custom text.
-
-The app is ready to be connected to GitHub and deployed as a public Streamlit link. GitHub itself will store the code, and Streamlit Cloud can host the live UI page that anyone can open and use.
-
-## Open The UI
-
-Run the interface locally from the project root:
-
+# Launch the Streamlit UI
 streamlit run app.py
+```
 
-The GitHub repository homepage should also include the public Streamlit link after deployment.
+The app will open at `http://localhost:8501/` in your browser.
 
-Suggested README badge for the top of the repository after deployment:
+### Alternative: Run Development Version
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](REPLACE-WITH-WORKING-STREAMLIT-URL)
+```bash
+# Use local development dependencies
+pip install -r SRC/Requirement.txt
 
-Replace `REPLACE-WITH-WORKING-STREAMLIT-URL` when a new working public deployment is available.
+# Run the Streamlit development UI
+streamlit run SRC/Streamlit_App.py
+```
 
-Suggested GitHub section after deployment:
+## Project Status
 
-- Live UI: REPLACE-WITH-WORKING-STREAMLIT-URL
-- App entry point: `app.py`
-- Local launch: `streamlit run app.py`
+### ✅ What Works
+- Local Streamlit app runs perfectly
+- DistilBERT model inference works correctly
+- All core functionality (training, evaluation, batch prediction) is operational
+- Deployment configuration is ready
+
+### ⚠️ Deployment Status
+- **Streamlit Cloud**: Currently unavailable (403 Forbidden access error on platform)
+- **Hugging Face Spaces**: Recommended alternative (requires HF account)
+- **Local testing**: Fully functional
+- **SSH tunneling**: Can be used for temporary sharing
+
+## Deployment Options
+
+### 1. **Hugging Face Spaces** (Recommended)
+1. Create account at [huggingface.co](https://huggingface.co)
+2. Create new Space with Streamlit template
+3. Connect GitHub repo or upload files
+4. Auto-deploys on push
+
+### 2. **Railway, Render, or Heroku**
+1. Fork/push repo to GitHub
+2. Connect repo to hosting platform
+3. Set startup command: `streamlit run app.py`
+4. Deploy
+
+### 3. **Local Sharing via SSH Tunnel** (Temporary)
+```bash
+# In a new terminal (keep app running in another)
+ssh -o StrictHostKeyChecking=no -R 80:localhost:8501 nokey@localhost.run
+```
+This generates a public HTTPS URL (changes each time)
+
+## Full Feature List
 
 ## Project Structure
 
-- SRC/Train.py: Fine-tunes the model on IMDb data
-- SRC/Evaluate_Model.py: Evaluates the saved model and prints accuracy and F1
-- SRC/Inference.py: Runs sentiment prediction for custom input text
-- SRC/Batch_Predict.py: Runs batch predictions for a CSV file
-- SRC/Streamlit_App.py: Launches a professional web UI for interactive predictions
-- app.py: Root Streamlit entry point for GitHub/Streamlit Cloud deployment
-- run_pipeline.py: Runs train, evaluate, and inference sequentially
-- SRC/Config.py: Central configuration for model and paths
+```
+SENTIMENT_Project/
+├── app.py                          # Streamlit entry point (deployment)
+├── requirements.txt                # Production dependencies
+├── run_pipeline.py                 # Full training/eval/inference pipeline
+├── SRC/
+│   ├── Config.py                   # Centralized config
+│   ├── Train.py                    # Model fine-tuning on IMDb
+│   ├── Evaluate_Model.py           # Performance evaluation
+│   ├── Inference.py                # Single text prediction
+│   ├── Batch_Predict.py            # CSV batch predictions
+│   ├── Streamlit_App.py            # Web UI (local development)
+│   ├── Preprocess.py               # Data preprocessing
+│   ├── Data_Loader.py              # Dataset utilities
+│   ├── Requirement.txt             # Development dependencies
+│   └── Models/                     # Trained model checkpoints
+├── Data/                           # Datasets & sample data
+├── Models/                         # Model outputs
+└── Outputs/                        # Predictions & results
+```
 
-## Requirements
+## Installation
 
-Python 3.10+ is recommended.
+### Install Dependencies
 
-Install dependencies:
-
-pip install -r SRC/Requirement.txt
-
-For GitHub deployment, install from the root requirements file instead:
-
+```bash
+# Production (recommended for deployment)
 pip install -r requirements.txt
 
-## Run Commands
+# Development (local experiments)
+pip install -r SRC/Requirement.txt
+```
 
-From the project root directory:
+**Requirements Include:**
+- streamlit
+- transformers (HuggingFace)
+- torch & torchvision
+- pandas, numpy, scikit-learn
+- datasets, evaluate
 
-Train only:
+## Usage
 
-python SRC/Train.py
+### 🎯 Web Interface (Recommended for testing)
 
-Train quick smoke test:
-
-python SRC/Train.py --smoke-test
-
-Evaluate only:
-
-python SRC/Evaluate_Model.py
-
-Inference only:
-
-python SRC/Inference.py
-
-Inference with custom text:
-
-python SRC/Inference.py --text "This movie was terrible and boring"
-
-Launch the web UI:
-
-streamlit run SRC/Streamlit_App.py
-
-Launch the deployment-ready entry point:
-
+```bash
+# Deploy-ready entry point
 streamlit run app.py
 
-Batch prediction from CSV (expects a text column by default):
+# Or development UI
+streamlit run SRC/Streamlit_App.py
+```
 
-python SRC/Batch_Predict.py --input Data/reviews.csv --output Outputs/predictions.csv
+Then open http://localhost:8501/ in your browser and enter text for sentiment prediction.
 
-Run full pipeline:
+### 🔧 Command Line
 
-python run_pipeline.py
+**Train the model:**
+```bash
+python SRC/Train.py                           # Full training
+python SRC/Train.py --smoke-test              # Quick test run
+```
 
-Run fast pipeline smoke test:
+**Evaluate performance:**
+```bash
+python SRC/Evaluate_Model.py
+```
 
-python run_pipeline.py --fast
+**Predict sentiment for single text:**
+```bash
+python SRC/Inference.py --text "Great movie!"
+```
+
+**Batch predict from CSV:**
+```bash
+python SRC/Batch_Predict.py --input Data/sample_reviews.csv --output predictions.csv
+```
+
+**Run full pipeline:**
+```bash
+python run_pipeline.py                        # Full execution
+python run_pipeline.py --fast                 # Quick test run
+```
+
+## Troubleshooting
+
+### Issue: "Module not found" errors
+
+**Solution:**
+```bash
+# Reinstall all dependencies
+pip install -r requirements.txt --force-reinstall
+
+# Or upgrade pip first
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### Issue: Port 8501 already in use
+
+**Solution:**
+```bash
+# Use different port
+streamlit run app.py --server.port 8502
+```
+
+### Issue: Out of memory during training
+
+**Solution:** Open `SRC/Config.py` and reduce `BATCH_SIZE` or `MAX_LENGTH`
+
+### Issue: Model checkpoint not found
+
+**Solution:** The app automatically falls back to HuggingFace's default DistilBERT model. To train and save your own:
+```bash
+python SRC/Train.py    # Creates checkpoint in SRC/Models/
+```
+
+## Model Details
+
+- **Base Model**: DistilBERT (distilbert-base-uncased)
+- **Task**: Binary sentiment classification (positive/negative)
+- **Training Data**: IMDb movie reviews (50K samples)
+- **Framework**: HuggingFace Transformers + PyTorch
+- **Input**: Any text string
+- **Output**: Predicted label (positive/negative) + confidence score
 
 ## Notes
 
-- Paths are configured to be execution-location independent.
-- If model files are missing, evaluation and inference now raise clear error messages.
-- The public UI falls back to the Hugging Face sentiment checkpoint if local trained weights are unavailable.
-- Default model save directory is defined in SRC/Config.py.
-- Batch prediction default text column is text (override with --text-column).
+- Paths are configured to be execution-location independent
+- Model files are auto-downloaded from HuggingFace on first run
+- Streamlit UI includes interactive examples
+- Batch predictions support custom text column names
+- Training uses GPU if available, falls back to CPU
+- Config file: `SRC/Config.py` for customization
 
-## Share It On GitHub
+## Known Issues & Limitations
 
-To make the interface available through a public link:
+1. **Streamlit Cloud Deployment**: Currently returns 403 Forbidden error (platform account access issue)
+   - **Workaround**: Deploy to Hugging Face Spaces, Railway, or Render instead
+   
+2. **First Run Slowness**: Model & dependencies download on first execution (~2-3 min)
+   - Subsequent runs are much faster due to caching
+   
+3. **Requires Internet**: Initial download of model from HuggingFace requires connection
 
-1. Push this project to a GitHub repository.
-2. Connect the repository to Streamlit Community Cloud.
-3. Set the app file path to `app.py`.
-4. Add the generated Streamlit link to the top of this README.
-5. Share the generated Streamlit link with anyone.
+## Deployment Guide (Step-by-Step)
 
-Anyone who opens that link will see the UI, type any sentence, and get the model's feedback.
+### Option A: Hugging Face Spaces (Recommended)
+
+1. Create HuggingFace account
+2. Go to [huggingface.co/spaces](https://huggingface.co/spaces)
+3. Create new Space → Streamlit template
+4. Upload `app.py` and `requirements.txt`
+5. Or connect GitHub repo for auto-deploy
+6. Share the generated Space URL
+
+### Option B: Railway.app (Free Tier Available)
+
+1. Connect GitHub repo to [railway.app](https://railway.app)
+2. Add environment variable: `PORT=8501`
+3. Set startup command: `streamlit run app.py --server.port 8501`
+4. Deploy
+
+### Option C: Local with SSH Tunnel (Temporary)
+
+```bash
+# Terminal 1: Run the app
+streamlit run app.py
+
+# Terminal 2: Create tunnel
+ssh -o StrictHostKeyChecking=no -R 80:localhost:8501 nokey@localhost.run
+```
+
+The tunnel generates a public HTTPS URL (changes each restart, no account needed)
+
+## Development
+
+### Setup Development Environment
+
+```bash
+# Create virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate      # On Windows: venv\Scripts\activate
+
+# Install dev dependencies
+pip install -r SRC/Requirement.txt
+```
+
+### Running Tests
+
+```bash
+# Quick smoke test of all components
+python SRC/Train.py --smoke-test
+python SRC/Evaluate_Model.py
+python SRC/Inference.py
+```
+
+## Contributing
+
+Feel free to fork, modify, and submit pull requests!
+
+### Potential Improvements
+
+- [ ] Support for other languages
+- [ ] Multi-class classification (star ratings)
+- [ ] Model quantization for faster inference
+- [ ] GPU optimization for batch processing
+- [ ] API deployment with FastAPI
+- [ ] Docker containerization
+
+## License
+
+This project is open source and available under the MIT License.
+
+## Contact
+
+For issues or questions:
+- GitHub Issues: [SENTIMENT-NLP- Issues](https://github.com/EbiAraz/SENTIMENT-NLP-/issues)
+- Author: EbiAraz
