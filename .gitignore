@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.streamlit/secrets.toml
+
+# Local runtime and editor files
+.vscode/
+.idea/
+
+# Python packaging and cache artifacts
+build/
+dist/
+*.egg-info/
+
+# Model outputs and training artifacts can be large
+results/
+Outputs/
+SRC/Outputs/
+SRC/results/
+SRC/Models/
+Models/
+Data/imdb_hf/
+*.arrow
