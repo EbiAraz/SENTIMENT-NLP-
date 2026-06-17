@@ -2,6 +2,16 @@
 
 A deep learning project that fine-tunes DistilBERT for binary sentiment classification. Includes training, evaluation, inference, and a Streamlit web UI.
 
+## Streamlit Run Link
+
+- Public app link: currently unavailable
+- Streamlit Cloud URLs returning 403:
+   - https://4qt3vq9xnjvvemjrcxys6c.streamlit.app/
+   - https://sentiment-nlp-live-20260617.streamlit.app/
+- Local run link: http://localhost:8501/
+
+When a new public deployment is ready (Hugging Face Spaces/Railway/Render), replace this section with the working URL.
+
 ## Quick Start - Run Locally
 
 ### Prerequisites
