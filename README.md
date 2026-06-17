@@ -4,13 +4,13 @@ A deep learning project that fine-tunes DistilBERT for binary sentiment classifi
 
 ## Streamlit Run Link
 
-- Public app link: currently unavailable
+- Public app link (working): https://paperback-scope-paradise-advertisements.trycloudflare.com
 - Streamlit Cloud URLs returning 403:
    - https://4qt3vq9xnjvvemjrcxys6c.streamlit.app/
    - https://sentiment-nlp-live-20260617.streamlit.app/
 - Local run link: http://localhost:8501/
 
-When a new public deployment is ready (Hugging Face Spaces/Railway/Render), replace this section with the working URL.
+Note: the current public link is a Cloudflare quick tunnel (no card needed). It stays live while the cloudflared process is running on this machine.
 
 ## Quick Start - Run Locally
 
