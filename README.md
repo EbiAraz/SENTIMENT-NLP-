@@ -12,6 +12,14 @@ A deep learning project that fine-tunes DistilBERT for binary sentiment classifi
 
 Note: the current public link is a Cloudflare quick tunnel (no card needed). It stays live while the cloudflared process is running on this machine.
 
+### One-Click Public Link (Windows)
+
+Run `start_public_link.bat` from the project root. It starts:
+- Streamlit on localhost:8501
+- Cloudflare quick tunnel for a public HTTPS URL
+
+Keep both opened terminal windows running while sharing the app.
+
 ## Quick Start - Run Locally
 
 ### Prerequisites
