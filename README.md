@@ -6,6 +6,26 @@ It also includes a Streamlit interface for a more polished, app-like experience 
 
 The app is ready to be connected to GitHub and deployed as a public Streamlit link. GitHub itself will store the code, and Streamlit Cloud can host the live UI page that anyone can open and use.
 
+## Open The UI
+
+Run the interface locally from the project root:
+
+streamlit run app.py
+
+The GitHub repository homepage should also include the public Streamlit link after deployment.
+
+Suggested README badge for the top of the repository after deployment:
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR-STREAMLIT-APP-URL)
+
+Replace `YOUR-STREAMLIT-APP-URL` with the public Streamlit Community Cloud URL.
+
+Suggested GitHub section after deployment:
+
+- Live UI: YOUR-STREAMLIT-APP-URL
+- App entry point: `app.py`
+- Local launch: `streamlit run app.py`
+
 ## Project Structure
 
 - SRC/Train.py: Fine-tunes the model on IMDb data
@@ -88,6 +108,7 @@ To make the interface available through a public link:
 1. Push this project to a GitHub repository.
 2. Connect the repository to Streamlit Community Cloud.
 3. Set the app file path to `app.py`.
-4. Share the generated Streamlit link with anyone.
+4. Add the generated Streamlit link to the top of this README.
+5. Share the generated Streamlit link with anyone.
 
 Anyone who opens that link will see the UI, type any sentence, and get the model's feedback.
