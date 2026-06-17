@@ -2,7 +2,11 @@
 
 ## Streamlit Run Link
 
-[Run the Streamlit app (public)](https://4qt3vq9xnjvvemjrcxys6c.streamlit.app/)
+Public Streamlit URL status: temporarily unavailable (403 on Streamlit Cloud).
+
+Temporary test method:
+
+- Run locally: `streamlit run app.py`
 
 This project fine-tunes a DistilBERT model for binary sentiment classification and provides training, evaluation, and inference scripts.
 
@@ -20,13 +24,13 @@ The GitHub repository homepage should also include the public Streamlit link aft
 
 Suggested README badge for the top of the repository after deployment:
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://4qt3vq9xnjvvemjrcxys6c.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](REPLACE-WITH-WORKING-STREAMLIT-URL)
 
-This badge opens the public Streamlit Community Cloud URL.
+Replace `REPLACE-WITH-WORKING-STREAMLIT-URL` when a new working public deployment is available.
 
 Suggested GitHub section after deployment:
 
-- Live UI: https://4qt3vq9xnjvvemjrcxys6c.streamlit.app/
+- Live UI: REPLACE-WITH-WORKING-STREAMLIT-URL
 - App entry point: `app.py`
 - Local launch: `streamlit run app.py`
 
