@@ -1,8 +1,8 @@
 # Sentiment Analysis Project (DistilBERT)
 
-## Live Demo
+## Streamlit Run Link
 
-[Open the public Streamlit app](https://4qt3vq9xnjvvemjrcxys6c.streamlit.app/)
+[Run the Streamlit app (public)](https://4qt3vq9xnjvvemjrcxys6c.streamlit.app/)
 
 This project fine-tunes a DistilBERT model for binary sentiment classification and provides training, evaluation, and inference scripts.
 
