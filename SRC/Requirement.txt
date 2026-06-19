@@ -1,6 +1,6 @@
 transformers
 datasets
-scikit_learn
+scikit-learn
 torch
 torchvision
 numpy

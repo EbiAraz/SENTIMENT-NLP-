@@ -26,13 +26,13 @@ if errorlevel 1 (
 )
 
 echo Starting Streamlit app on http://localhost:8501 ...
-start "Streamlit App" cmd /k "cd /d %CD% && streamlit run app.py"
+start "Streamlit App" cmd /k "cd /d %CD% && python -m streamlit run app.py"
 
 echo Waiting for app startup...
 timeout /t 6 /nobreak >nul
 
 echo Starting Cloudflare public tunnel...
-start "Cloudflare Tunnel" cmd /k "cd /d %CD% && "%CLOUDFLARED_CMD%" tunnel --url http://localhost:8501"
+start "Cloudflare Tunnel" cmd /k "cd /d %CD% && call "%CLOUDFLARED_CMD%" tunnel --url http://localhost:8501"
 
 echo.
 echo Open the "Cloudflare Tunnel" window and copy the https://*.trycloudflare.com link.

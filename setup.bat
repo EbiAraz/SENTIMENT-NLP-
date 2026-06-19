@@ -18,8 +18,8 @@ if errorlevel 1 (
 
 echo.
 echo Installing dependencies...
-pip install --upgrade pip setuptools wheel
-pip install -r requirements.txt
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -r requirements.txt
 
 if errorlevel 1 (
     echo ERROR: Failed to install dependencies
@@ -33,7 +33,7 @@ echo ✓ Setup complete!
 echo ========================================
 echo.
 echo To launch the app, run:
-echo   streamlit run app.py
+echo   python -m streamlit run app.py
 echo.
 echo The app will open at http://localhost:8501/
 echo.

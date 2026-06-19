@@ -37,7 +37,7 @@ cd SENTIMENT-NLP-
 pip install -r requirements.txt
 
 # Launch the Streamlit UI
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
 The app will open at `http://localhost:8501/` in your browser.
@@ -49,7 +49,7 @@ The app will open at `http://localhost:8501/` in your browser.
 pip install -r SRC/Requirement.txt
 
 # Run the Streamlit development UI
-streamlit run SRC/Streamlit_App.py
+python -m streamlit run SRC/Streamlit_App.py
 ```
 
 ## Project Status
@@ -137,10 +137,10 @@ pip install -r SRC/Requirement.txt
 
 ```bash
 # Deploy-ready entry point
-streamlit run app.py
+python -m streamlit run app.py
 
 # Or development UI
-streamlit run SRC/Streamlit_App.py
+python -m streamlit run SRC/Streamlit_App.py
 ```
 
 Then open http://localhost:8501/ in your browser and enter text for sentiment prediction.
