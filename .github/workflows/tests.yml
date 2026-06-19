@@ -64,17 +64,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    
-- name: Install Bandit
-  run: pip install bandit
 
-- uses: actions/setup-python@v4
-  with:
-    python-version: '3.11'
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
 
-- name: Install Bandit
-  run: pip install bandit
+    - name: Install Bandit
+      run: pip install bandit
 
-- name: Run Bandit security check
-  run: bandit -r .
-  continue-on-error: true
+    - name: Run Bandit security check
+      run: bandit -r .
+      continue-on-error: true
