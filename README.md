@@ -1,32 +1,32 @@
 # Sentiment Analysis Project (DistilBERT)
 
-
-A deep learning project that fine-tunes DistilBERT for binary sentiment classification. Includes training, evaluation, inference, and a Streamlit web UI.
+A deep learning project that fine-tunes DistilBERT for binary sentiment classification. It includes training, evaluation, inference, and a Streamlit web UI.
 
 ## Streamlit Run Link
 
+- Public link: [https://sentiment-nlp-live-20260617.streamlit.app/](https://sentiment-nlp-live-20260617.streamlit.app/)
+- Local run link: [http://localhost:8501/](http://localhost:8501/)
 
-   - https://sentiment-nlp-live-20260617.streamlit.app/
-- Local run link: http://localhost:8501/
-
-Note: the current public link is a Cloudflare quick tunnel (no card needed). It stays live while the cloudflared process is running on this machine.
+The public link is a Cloudflare quick tunnel. It stays live while the `cloudflared` process is running on this machine.
 
 ### One-Click Public Link (Windows)
 
 Run `start_public_link.bat` from the project root. It starts:
+
 - Streamlit on localhost:8501
 - Cloudflare quick tunnel for a public HTTPS URL
 
-Keep both opened terminal windows running while sharing the app.
+Keep both terminal windows open while sharing the app.
 
-## Quick Start - Run Locally
+## Quick Start
 
 ### Prerequisites
-- Python 3.10 or higher
-- pip or conda package manager
-- ~2GB free disk space (for models)
 
-### Installation & Running
+- Python 3.10 or higher
+- `pip` or `conda`
+- About 2 GB of free disk space for model files
+
+### Installation and Running
 
 ```bash
 # Clone the repository
@@ -40,9 +40,9 @@ pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-The app will open at `http://localhost:8501/` in your browser.
+The app will open at [http://localhost:8501/](http://localhost:8501/) in your browser.
 
-### Alternative: Run Development Version
+### Alternative: Development Version
 
 ```bash
 # Use local development dependencies
@@ -54,44 +54,51 @@ python -m streamlit run SRC/Streamlit_App.py
 
 ## Project Status
 
-### ✅ What Works
-- Local Streamlit app runs perfectly
+### What Works
+
+- Local Streamlit app runs correctly
 - DistilBERT model inference works correctly
-- All core functionality (training, evaluation, batch prediction) is operational
+- Training, evaluation, and batch prediction are operational
 - Deployment configuration is ready
 
-### ⚠️ Deployment Status
-- **Streamlit Cloud**: Currently unavailable (403 Forbidden access error on platform)
-- **Hugging Face Spaces**: Recommended alternative (requires HF account)
-- **Local testing**: Fully functional
-- **SSH tunneling**: Can be used for temporary sharing
+### Deployment Status
+
+- Streamlit Cloud: currently unavailable due to a 403 Forbidden access issue
+- Hugging Face Spaces: recommended alternative if you want hosted deployment
+- Local testing: fully functional
+- SSH tunneling: available for temporary sharing
 
 ## Deployment Options
 
-### 1. **Hugging Face Spaces** (Recommended)
-1. Create account at [huggingface.co](https://huggingface.co)
-2. Create new Space with Streamlit template
-3. Connect GitHub repo or upload files
-4. Auto-deploys on push
+### 1. Hugging Face Spaces
 
-### 2. **Railway, Render, or Heroku**
-1. Fork/push repo to GitHub
-2. Connect repo to hosting platform
-3. Set startup command: `streamlit run app.py`
+1. Create an account at [huggingface.co](https://huggingface.co)
+2. Create a new Space with the Streamlit template
+3. Connect the GitHub repo or upload the files
+4. The app auto-deploys on push
+
+### 2. Railway, Render, or Heroku
+
+1. Fork or push the repo to GitHub
+2. Connect the repo to your hosting platform
+3. Set the startup command to `python -m streamlit run app.py`
 4. Deploy
 
-### 3. **Local Sharing via SSH Tunnel** (Temporary)
+### 3. Local Sharing via SSH Tunnel
+
 ```bash
-# In a new terminal (keep app running in another)
+# Terminal 1: Run the app
+python -m streamlit run app.py
+
+# Terminal 2: Create tunnel
 ssh -o StrictHostKeyChecking=no -R 80:localhost:8501 nokey@localhost.run
 ```
-This generates a public HTTPS URL (changes each time)
 
-## Full Feature List
+This generates a public HTTPS URL that changes each time you restart the tunnel.
 
 ## Project Structure
 
-```
+```text
 SENTIMENT_Project/
 ├── app.py                          # Streamlit entry point (deployment)
 ├── requirements.txt                # Production dependencies
@@ -107,9 +114,9 @@ SENTIMENT_Project/
 │   ├── Data_Loader.py              # Dataset utilities
 │   ├── Requirement.txt             # Development dependencies
 │   └── Models/                     # Trained model checkpoints
-├── Data/                           # Datasets & sample data
+├── Data/                           # Datasets and sample data
 ├── Models/                         # Model outputs
-└── Outputs/                        # Predictions & results
+└── Outputs/                        # Predictions and results
 ```
 
 ## Installation
@@ -124,16 +131,17 @@ pip install -r requirements.txt
 pip install -r SRC/Requirement.txt
 ```
 
-**Requirements Include:**
+### Requirements Include
+
 - streamlit
-- transformers (HuggingFace)
-- torch & torchvision
+- transformers
+- torch and torchvision
 - pandas, numpy, scikit-learn
 - datasets, evaluate
 
 ## Usage
 
-### 🎯 Web Interface (Recommended for testing)
+### Web Interface
 
 ```bash
 # Deploy-ready entry point
@@ -143,42 +151,46 @@ python -m streamlit run app.py
 python -m streamlit run SRC/Streamlit_App.py
 ```
 
-Then open http://localhost:8501/ in your browser and enter text for sentiment prediction.
+Then open [http://localhost:8501/](http://localhost:8501/) in your browser and enter text for sentiment prediction.
 
-### 🔧 Command Line
+### Command Line
 
-**Train the model:**
+Train the model:
+
 ```bash
-python SRC/Train.py                           # Full training
-python SRC/Train.py --smoke-test              # Quick test run
+python SRC/Train.py
+python SRC/Train.py --smoke-test
 ```
 
-**Evaluate performance:**
+Evaluate performance:
+
 ```bash
 python SRC/Evaluate_Model.py
 ```
 
-**Predict sentiment for single text:**
+Predict sentiment for a single text:
+
 ```bash
 python SRC/Inference.py --text "Great movie!"
 ```
 
-**Batch predict from CSV:**
+Batch predict from CSV:
+
 ```bash
 python SRC/Batch_Predict.py --input Data/sample_reviews.csv --output predictions.csv
 ```
 
-**Run full pipeline:**
+Run the full pipeline:
+
 ```bash
-python run_pipeline.py                        # Full execution
-python run_pipeline.py --fast                 # Quick test run
+python run_pipeline.py
+python run_pipeline.py --fast
 ```
 
 ## Troubleshooting
 
-### Issue: "Module not found" errors
+### Module not found errors
 
-**Solution:**
 ```bash
 # Reinstall all dependencies
 pip install -r requirements.txt --force-reinstall
@@ -188,33 +200,33 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Issue: Port 8501 already in use
+### Port 8501 already in use
 
-**Solution:**
 ```bash
-# Use different port
-streamlit run app.py --server.port 8502
+# Use a different port
+python -m streamlit run app.py --server.port 8502
 ```
 
-### Issue: Out of memory during training
+### Out of memory during training
 
-**Solution:** Open `SRC/Config.py` and reduce `BATCH_SIZE` or `MAX_LENGTH`
+Open `SRC/Config.py` and reduce `BATCH_SIZE` or `MAX_LENGTH`.
 
-### Issue: Model checkpoint not found
+### Model checkpoint not found
 
-**Solution:** The app automatically falls back to HuggingFace's default DistilBERT model. To train and save your own:
+The app automatically falls back to HuggingFace's default DistilBERT model. To train and save your own checkpoint:
+
 ```bash
-python SRC/Train.py    # Creates checkpoint in SRC/Models/
+python SRC/Train.py
 ```
 
 ## Model Details
 
-- **Base Model**: DistilBERT (distilbert-base-uncased)
-- **Task**: Binary sentiment classification (positive/negative)
-- **Training Data**: IMDb movie reviews (50K samples)
-- **Framework**: HuggingFace Transformers + PyTorch
-- **Input**: Any text string
-- **Output**: Predicted label (positive/negative) + confidence score
+- Base model: DistilBERT (`distilbert-base-uncased`)
+- Task: binary sentiment classification
+- Training data: IMDb movie reviews (50K samples)
+- Framework: HuggingFace Transformers + PyTorch
+- Input: any text string
+- Output: predicted label and confidence score
 
 ## Notes
 
@@ -222,55 +234,23 @@ python SRC/Train.py    # Creates checkpoint in SRC/Models/
 - Model files are auto-downloaded from HuggingFace on first run
 - Streamlit UI includes interactive examples
 - Batch predictions support custom text column names
-- Training uses GPU if available, falls back to CPU
-- Config file: `SRC/Config.py` for customization
+- Training uses GPU if available, otherwise CPU
+- Configure `SRC/Config.py` for customization
 
-## Known Issues & Limitations
+## Known Issues and Limitations
 
-1. **Streamlit Cloud Deployment**: Currently returns 403 Forbidden error (platform account access issue)
-   - **Workaround**: Deploy to Hugging Face Spaces, Railway, or Render instead
-   
-2. **First Run Slowness**: Model & dependencies download on first execution (~2-3 min)
-   - Subsequent runs are much faster due to caching
-   
-3. **Requires Internet**: Initial download of model from HuggingFace requires connection
-
-## Deployment Guide (Step-by-Step)
-
-### Option A: Hugging Face Spaces (Recommended)
-
-1. Create HuggingFace account
-2. Go to [huggingface.co/spaces](https://huggingface.co/spaces)
-3. Create new Space → Streamlit template
-4. Upload `app.py` and `requirements.txt`
-5. Or connect GitHub repo for auto-deploy
-6. Share the generated Space URL
-
-### Option B: Railway.app (Free Tier Available)
-
-1. Connect GitHub repo to [railway.app](https://railway.app)
-2. Add environment variable: `PORT=8501`
-3. Set startup command: `streamlit run app.py --server.port 8501`
-4. Deploy
-
-### Option C: Local with SSH Tunnel (Temporary)
-
-```bash
-# Terminal 1: Run the app
-streamlit run app.py
-
-# Terminal 2: Create tunnel
-ssh -o StrictHostKeyChecking=no -R 80:localhost:8501 nokey@localhost.run
-```
-
-The tunnel generates a public HTTPS URL (changes each restart, no account needed)
+1. Streamlit Cloud deployment currently returns a 403 Forbidden error due to platform account access.
+   - Workaround: deploy to Hugging Face Spaces, Railway, or Render.
+2. First run is slower because the model and dependencies download on the initial execution.
+   - Later runs are faster due to caching.
+3. Initial model download requires internet access.
 
 ## Development
 
 ### Setup Development Environment
 
 ```bash
-# Create virtual environment (optional but recommended)
+# Create a virtual environment (optional but recommended)
 python -m venv venv
 source venv/bin/activate      # On Windows: venv\Scripts\activate
 
@@ -281,7 +261,6 @@ pip install -r SRC/Requirement.txt
 ### Running Tests
 
 ```bash
-# Quick smoke test of all components
 python SRC/Train.py --smoke-test
 python SRC/Evaluate_Model.py
 python SRC/Inference.py
@@ -289,16 +268,16 @@ python SRC/Inference.py
 
 ## Contributing
 
-Feel free to fork, modify, and submit pull requests!
+Feel free to fork, modify, and submit pull requests.
 
 ### Potential Improvements
 
-- [ ] Support for other languages
-- [ ] Multi-class classification (star ratings)
-- [ ] Model quantization for faster inference
-- [ ] GPU optimization for batch processing
-- [ ] API deployment with FastAPI
-- [ ] Docker containerization
+- Support for other languages
+- Multi-class classification with star ratings
+- Model quantization for faster inference
+- GPU optimization for batch processing
+- API deployment with FastAPI
+- Docker containerization
 
 ## License
 
@@ -307,5 +286,6 @@ This project is open source and available under the MIT License.
 ## Contact
 
 For issues or questions:
+
 - GitHub Issues: [SENTIMENT-NLP- Issues](https://github.com/EbiAraz/SENTIMENT-NLP-/issues)
 - Author: EbiAraz
